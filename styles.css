@@ -12,9 +12,7 @@ body {
   font-size: 16px;
   font-family: 'Kumbh Sans', sans-serif;
   background-color: hsl(185, 75%, 39%);
-  background-image: url("/images/bg-pattern-top.svg"), url("/images/bg-pattern-bottom.svg");
-  background-position: -80% 160%, 160% -80%;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 /* Make images easier to work with */
@@ -41,7 +39,7 @@ select {
   }
 }
 
-.attribution { font-size: 11px; text-align: center; }
+.attribution { position: relative; font-size: 11px; text-align: center; z-index: 1; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
 .main-container {
@@ -52,13 +50,64 @@ select {
   align-items: center;
 }
 
+.bg-top {
+  position: absolute;
+  left: -40%;
+  top: -40%;
+  height: 100%;
+  width: 100%; 
+  background-image: url("/images/bg-pattern-top.svg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  z-index: 0;
+  transform: rotate(240deg);
+}
+@media (min-width: 768px){
+  .bg-top {
+    transform: rotate(120deg);
+  } 
+}
+
+.bg-bottom {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  height: 100%;
+  width: 100%; 
+  background-image: url("/images/bg-pattern-bottom.svg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  z-index: 0;
+}
+
 .card-container {
-  width: 22%;
+  width: 80%;
   height: auto;
   min-height: 300px; 
   border-width: 1px;
   border-radius: 5%;
   background-color: #fefefe;
+  z-index: 1;
+}
+@media (min-width: 351px) and (max-width: 640px) {
+  .card-container {
+    width: 65%;
+  } 
+}
+@media (min-width: 640px) and (max-width: 768px) {
+  .card-container {
+    width: 55%;
+  } 
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-container {
+    width: 40%;
+  } 
+}
+@media (min-width: 1024px) {
+  .card-container {
+    width: 25%;
+  } 
 }
 
 .upper-section {
